@@ -1,0 +1,24 @@
+{
+  "name": "Crystal",
+  "scopeName": "source.crystal",
+  "type": "tree-sitter",
+  "parser": "tree-sitter-crystal",
+  "injectionNames": ["crystal"],
+  "fileTypes": ["cr"],
+  "comments": {
+    "start": "# "
+  },
+  "treeSitter": {
+    // Pin a tag or a full SHA, never a branch. Verify the ref is on the main
+    // line before trusting it — `gh api repos/OWNER/REPO/compare/<ref>...HEAD`
+    // reporting `diverged` or a nonzero `behind` means it is not.
+    "parserSource": "github:crystal-lang-tools/tree-sitter-crystal#50ca9e6fcfb16a2cbcad59203cfd8ad650e25c49",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "grammar": "crystal.wasm",
+    "highlightsQuery": "crystal-highlights.scm",
+    "foldsQuery": "crystal-folds.scm",
+    "indentsQuery": "crystal-indents.scm",
+    "tagsQuery": "crystal-tags.scm",
+    "localsQuery": "crystal-locals.scm"
+  }
+}

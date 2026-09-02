@@ -1,0 +1,10 @@
+{
+  ".source.crystal": {
+    "bracket-matcher": {
+      "autocompleteCharacters": ["()", "[]", "{}", "\"\"", "''"]
+    },
+    "editor": {
+      "commentStart": "# "
+    }
+  }
+}
