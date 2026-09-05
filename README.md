@@ -12,7 +12,7 @@ Crystal language support.
 
 ## Installation
 
-To install `language-crystal` search for _language-crystal_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-crystal`.
+To install `language-crystal` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-crystal`.
 
 ## Services
 
