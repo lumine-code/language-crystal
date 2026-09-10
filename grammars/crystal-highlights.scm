@@ -148,51 +148,45 @@
 
 (string) @string.quoted.double.crystal
 
-(string
-  "\"" @punctuation.definition.string.begin.crystal
+("\"" @punctuation.definition.string.begin.crystal
+  (#is? test.childOfType string)
   (#is? test.first true))
 
-(string
-  "\"" @punctuation.definition.string.end.crystal
+("\"" @punctuation.definition.string.end.crystal
+  (#is? test.childOfType string)
   (#is? test.last true))
 
-(string
-  (escape_sequence) @constant.character.escape.crystal)
+((escape_sequence) @constant.character.escape.crystal
+  (#is? test.childOfType "string symbol command char"))
 
 (symbol) @constant.other.symbol.crystal
 
-(symbol
-  [":" ":\""] @punctuation.definition.symbol.begin.crystal
+([":" ":\""] @punctuation.definition.symbol.begin.crystal
+  (#is? test.childOfType symbol)
   (#is? test.first true))
 
-(symbol
-  "\"" @punctuation.definition.symbol.end.crystal
+("\"" @punctuation.definition.symbol.end.crystal
+  (#is? test.childOfType symbol)
   (#is? test.last true))
-
-(symbol
-  (escape_sequence) @constant.character.escape.crystal)
 
 (command) @string.interpolated.command.crystal
 
-(command
-  "`" @punctuation.definition.string.begin.crystal
+("`" @punctuation.definition.string.begin.crystal
+  (#is? test.childOfType command)
   (#is? test.first true))
 
-(command
-  "`" @punctuation.definition.string.end.crystal
+("`" @punctuation.definition.string.end.crystal
+  (#is? test.childOfType command)
   (#is? test.last true))
-
-(command
-  (escape_sequence) @constant.character.escape.crystal)
 
 (regex) @string.regexp.crystal
 
-(regex
-  "/" @punctuation.definition.regexp.begin.crystal
+("/" @punctuation.definition.regexp.begin.crystal
+  (#is? test.childOfType regex)
   (#is? test.first true))
 
-(regex
-  "/" @punctuation.definition.regexp.end.crystal
+("/" @punctuation.definition.regexp.end.crystal
+  (#is? test.childOfType regex)
   (#is? test.last true))
 
 (regex_modifier) @storage.modifier.regexp.crystal
@@ -206,16 +200,13 @@
 
 (char) @constant.character.crystal
 
-(char
-  "'" @punctuation.definition.character.begin.crystal
+("'" @punctuation.definition.character.begin.crystal
+  (#is? test.childOfType char)
   (#is? test.first true))
 
-(char
-  "'" @punctuation.definition.character.end.crystal
+("'" @punctuation.definition.character.end.crystal
+  (#is? test.childOfType char)
   (#is? test.last true))
-
-(char
-  (escape_sequence) @constant.character.escape.crystal)
 
 (interpolation
   "#{" @punctuation.section.embedded.begin.crystal
@@ -223,7 +214,8 @@
 
 ; Comments
 
-(comment) @comment.line.number-sign.crystal
+((comment) @comment.line.number-sign.crystal
+  (#set! adjust.endBeforeFirstMatchOf "\\r?$"))
 
 ((comment) @punctuation.definition.comment.crystal
   (#set! adjust.endAfterFirstMatchOf "^#"))
@@ -268,9 +260,9 @@
   (named_expr
     name: (identifier) @entity.other.attribute-name.crystal))
 
-(argument_list
-  (named_expr
-    name: (identifier) @variable.parameter.function.crystal))
+(named_expr
+  name: (identifier) @variable.parameter.function.crystal
+  (#is? test.typeAt "parent.parent argument_list"))
 
 (named_type
   name: (identifier) @entity.other.attribute-name.crystal)
