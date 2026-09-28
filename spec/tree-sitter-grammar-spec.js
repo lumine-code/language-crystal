@@ -20,6 +20,11 @@ describe("Crystal Tree-sitter grammar", () => {
 
   afterEach(() => editor?.destroy());
 
+  async function highlightCaptures(options) {
+    const groups = await editor.getGrammarQueryCaptureGroups("highlightsQuery", options);
+    return groups.find(({ grammar }) => grammar === editor.getGrammar())?.captures ?? [];
+  }
+
   it("tokenizes the fixture", async () => {
     await runGrammarTests(path.join(__dirname, "fixtures", "sample.cr"), /#/);
   });
@@ -61,18 +66,16 @@ describe("Crystal Tree-sitter grammar", () => {
           `value_${index} = "text"; pattern_${index} = /item/; char_${index} = 'x' # generated`,
       ).join("\r\n"),
     );
-    const languageMode = editor.getBuffer().getLanguageMode();
-    await languageMode.ready;
-    const layer = languageMode.rootLanguageLayer;
+    await editor.getBuffer().getLanguageMode().ready;
 
-    expect(layer.queries.highlightsQuery.captures(layer.tree.rootNode).length).toBeLessThanOrEqual(
-      28000,
-    );
+    expect((await highlightCaptures()).length).toBeLessThanOrEqual(28000);
     expect(
-      layer.queries.highlightsQuery.captures(layer.tree.rootNode, {
-        startPosition: new Point(400, 0),
-        endPosition: new Point(406, 0),
-      }).length,
+      (
+        await highlightCaptures({
+          startPosition: new Point(400, 0),
+          endPosition: new Point(406, 0),
+        })
+      ).length,
     ).toBeLessThanOrEqual(170);
   });
 
@@ -85,10 +88,8 @@ describe("Crystal Tree-sitter grammar", () => {
         "\r\n",
       ),
     );
-    const languageMode = editor.getBuffer().getLanguageMode();
-    await languageMode.ready;
-    const layer = languageMode.rootLanguageLayer;
-    const captures = layer.queries.highlightsQuery.captures(layer.tree.rootNode, {
+    await editor.getBuffer().getLanguageMode().ready;
+    const captures = await highlightCaptures({
       startPosition: new Point(3000, 0),
       endPosition: new Point(3006, 0),
     });
@@ -110,10 +111,8 @@ describe("Crystal Tree-sitter grammar", () => {
     for (let index = 0; index < 6000; index++) lines.push("  \\n");
     lines.push("`");
     editor.setText(lines.join("\r\n"));
-    const languageMode = editor.getBuffer().getLanguageMode();
-    await languageMode.ready;
-    const layer = languageMode.rootLanguageLayer;
-    const captures = layer.queries.highlightsQuery.captures(layer.tree.rootNode, {
+    await editor.getBuffer().getLanguageMode().ready;
+    const captures = await highlightCaptures({
       startPosition: new Point(3000, 0),
       endPosition: new Point(3006, 0),
     });
