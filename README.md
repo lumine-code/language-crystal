@@ -10,6 +10,8 @@ Crystal language support.
 - **Navigation**: exposes types, methods, macros, constants, calls, and local bindings from Tree-sitter queries.
 - **Embedded syntax**: parses regex literals, recognized heredocs, and macro bodies through Tree-sitter injections.
 
+![Crystal syntax highlighting at the default editor font size.](.github/demo.png)
+
 ## Installation
 
 To install `language-crystal` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-crystal`.

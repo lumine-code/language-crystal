@@ -1,0 +1,16 @@
+{
+  "title": "language-crystal",
+  "description": "Crystal syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "6f306ec208eb00983329dd91221cd908559fa4ad",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Crystal syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 472
+    }
+  ]
+}
