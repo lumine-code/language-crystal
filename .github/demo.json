@@ -1,16 +1,61 @@
 {
   "title": "language-crystal",
-  "description": "Crystal syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "6f306ec208eb00983329dd91221cd908559fa4ad",
+  "description": "Crystal syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "c2312ba5fb6f3f52b46d9c364e60ea1cd9ef5304",
+  "themeSourceRevision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "c61d74480588df2b8e1643ef05a564f02894953eaada63d4d2e04dcf4de557ac",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 472 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "c4d7a05fe6960ae6fb041981d6cf13e9c0286b17",
+      "dirty": true,
+      "workingTreeHash": "af0ec098e764416df9522f3c6e555050b520e4700da382b2b983b2ff3742bd0a"
+    },
+    "package": {
+      "revision": "c2312ba5fb6f3f52b46d9c364e60ea1cd9ef5304",
+      "dirty": true,
+      "workingTreeHash": "13b3d5fa1359a0c00cce844f17db3dd5166384cdec178c9d8de1a99c45c5d7ba"
+    },
+    "language-crystal": {
+      "revision": "c2312ba5fb6f3f52b46d9c364e60ea1cd9ef5304",
+      "dirty": true,
+      "workingTreeHash": "13b3d5fa1359a0c00cce844f17db3dd5166384cdec178c9d8de1a99c45c5d7ba"
+    },
+    "one-theme": {
+      "revision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
+      "dirty": true,
+      "workingTreeHash": "25d6ed50595d6b10f7d53e41dbbe8f92dcb5c0e911871356f3e6138e5c76df57"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "example.cr",
+      "sha256": "f75b6924f280d401704a4efcbb6de76e3bd097c14bb7a05fac528fd86628f7ea"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Crystal syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 472
+      "height": 472,
+      "sha256": "680f6b89e117a86926bc732baecf925875bb38fb0494e3f764372807d3372118"
     }
   ]
 }
