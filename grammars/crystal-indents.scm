@@ -10,6 +10,10 @@
 (modifier_ensure "ensure" @_IGNORE_
   (#set! capture.final true))
 
+; `#{` is not an indentation delimiter, so its closing brace must not
+; cancel an outer list or block on the same row.
+(interpolation "}" @_IGNORE_ (#set! capture.final true))
+
 [
   "annotation"
   "begin"
