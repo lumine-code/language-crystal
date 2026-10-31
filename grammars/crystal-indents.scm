@@ -1,7 +1,19 @@
+; Branches inside a complete inline expression do not open another level.
+; Ignore only their own token so outer containers and later blocks still count.
+([(if (else "else" @_IGNORE_))
+  (unless (else "else" @_IGNORE_))
+  (case (when "when" @_IGNORE_))
+  (case (else "else" @_IGNORE_))
+  (select (when "when" @_IGNORE_))] @_inline
+  (#match? @_inline "^[^\n]*\\bend$")
+  (#set! capture.final true))
+
 ; A complete inline block keeps its own row level, including ELSE/WHEN
 ; branches that would otherwise count as extra unmatched opening keywords.
 ([(annotation_def) (class_def) (module_def) (method_def) (lib_def) (if) (unless) (case) (while) (until) (begin) (select)] @match.next
   (#is? test.startsOnSameRowAs endPosition)
+  (#is? test.firstTextOnRow)
+  (#is? test.lastTextOnRow)
   (#match? @match.next "\\bend$")
   (#set! indent.match startPosition))
 

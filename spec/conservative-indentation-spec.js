@@ -12,6 +12,9 @@ describe("Conservative crystal indentation", () => {
   afterEach(() => editor?.destroy());
 
   for (const [name, source, row, columns] of [
+    ["an outer array beside an inline branch", "values = [if ready; 1; else; 2; end,\n]", 0, 4],
+    ["a real block after an inline block", "if first; work; end; if second\nend", 0, 4],
+    ["a balanced array containing an inline branch", "values = [if ready; 1; else; 2; end]", 0, 0],
     ["an abstract declaration", "abstract def value", 0, 0],
     ["a foreign function declaration", "lib LibC\n    fun puts(str : UInt8*) : Int32\nend", 1, 4],
     ["a regular method header", "def value\nend", 0, 4],
