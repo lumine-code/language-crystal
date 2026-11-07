@@ -2,6 +2,9 @@
 Source: https://github.com/crystal-lang-tools/tree-sitter-crystal
 Revision: 50ca9e6fcfb16a2cbcad59203cfd8ad650e25c49
 
+Parser source: github:crystal-lang-tools/tree-sitter-crystal#50ca9e6fcfb16a2cbcad59203cfd8ad650e25c49
+Resolved commit: 50ca9e6fcfb16a2cbcad59203cfd8ad650e25c49
+
 Original file: LICENSE
 
 MIT License
